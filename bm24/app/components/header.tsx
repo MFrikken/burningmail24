@@ -6,5 +6,5 @@ export default function Header() {
             <h1>burningmail24</h1>
             <img src={"logo.png"} height={128} width={128}/>
         </div>
-    )
+    );
  }
