@@ -1,0 +1,15 @@
+.input-email-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left align content */
+    justify-content: center;
+    margin: 0 auto; /* center horizontally */
+    width: fit-content;
+    text-align: left;
+    padding: 2rem 0;
+}
+
+.input-text-area {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
