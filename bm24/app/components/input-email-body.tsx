@@ -1,21 +1,23 @@
-
+import "../css/input-email-body.css";
 
 export default function InputEmailBody() {
     return (
-        <div>
-            <h3>Input your emails body here</h3>
+        <div className={"input-email-body"}>
+            <h3 className={"input-header"}>Input your email body here</h3>
             <textarea
-                   placeholder={"Dear Mr. Zuckerberg, ..."}
-                   maxLength={500}
-                   autoFocus={true}
-                   cols={80}
-                   rows={20}
-                   required={true}
+                className={"input-text-area"}
+                placeholder={"Dear Mr. Zuckerberg, ..."}
+                maxLength={500}
+                autoFocus={true}
+                cols={80}
+                rows={20}
+                required={true}
             />
             <button
-            type={"submit"}
+                className={"submit-button"}
+                type={"submit"}
             >
-            Generate
+                Generate
             </button>
         </div>
     );

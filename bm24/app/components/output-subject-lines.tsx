@@ -1,7 +1,8 @@
+import "../css/output-subject-lines.css";
 
 export default function OutputSubjectLines() {
     return (
-      <div>
+      <div className={"output-subject-lines"}>
           <ol>
               <li>Inquiry: Free access to Meta offices</li>
               <li>Job application for open position as care taker</li>
