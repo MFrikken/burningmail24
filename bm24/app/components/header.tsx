@@ -1,10 +1,11 @@
 import "../css/header.css";
+import Image from "next/image";
 
 export default function Header() {
     return (
         <div className={"header"}>
             <h1>burningmail24</h1>
-            <img src={"logo.png"} height={128} width={128}/>
+            <Image src="/logo.png" alt="burningmail24 logo" width={128} height={128} />
         </div>
     );
  }
