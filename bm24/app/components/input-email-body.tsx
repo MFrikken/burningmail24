@@ -1,12 +1,16 @@
 import "../css/input-email-body.css";
 
-export default function InputEmailBody() {
+type InputEmailBodyProps = {
+    sampleMail: string;
+};
+
+export default function InputEmailBody(sampleMail: InputEmailBodyProps) {
     return (
         <div className={"input-email-body"}>
             <h3 className={"input-header"}>Input your email body here</h3>
             <textarea
                 className={"input-text-area"}
-                placeholder={"Dear Mr. Zuckerberg, ..."}
+                placeholder={sampleMail.sampleMail}
                 maxLength={500}
                 autoFocus={true}
                 cols={80}
