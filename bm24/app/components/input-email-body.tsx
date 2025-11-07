@@ -1,4 +1,5 @@
 import "../css/input-email-body.css";
+import {useState} from "react";
 
 type InputEmailBodyProps = {
     sampleMail: string;
@@ -16,10 +17,12 @@ export default function InputEmailBody(sampleMail: InputEmailBodyProps) {
                 cols={80}
                 rows={20}
                 required={true}
+                onChange={(e) => setMailbody(e.target.value)}
             />
             <button
                 className={"submit-button"}
                 type={"submit"}
+                onClick={submit}
             >
                 Generate
             </button>
