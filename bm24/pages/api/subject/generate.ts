@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { generateSubject } from '../../../backend/scripts/generate_subject';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 // Only allow POST requests
@@ -6,16 +7,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(405).json({ success: false, error: 'Method not allowed' });
     }
     try {
-        const { topic, keywords } = req.body;
-        if (!topic || !keywords) {
-            return res.status(400).json({ success: false, error: 'Missing topic or keywords' });
+        const { mailbody, ...kwargs } = req.body;
+        if (!mailbody) {
+            return res.status(400).json({ success: false, error: 'Missing mailbody' });
         }
-        // Simulate subject line generation
-        const generatedSubjects = [
-            `Discover the Secrets of ${topic} with ${keywords[0]}`,
-            `How ${keywords[1]} Can Transform Your ${topic} Experience`,
-            `Top 10 Tips for Mastering ${topic} Using ${keywords[2]}`
-        ];
+        // Execute the subject generation logic here
+        const generatedSubjects = await generateSubject(mailbody, kwargs);
         return res.status(200).json({ success: true, subjects: generatedSubjects });
     } catch (error) {
         console.error('Error generating subject lines:', error);

@@ -1,13 +1,21 @@
 import "../css/output-subject-lines.css";
 
-export default function OutputSubjectLines() {
+type OutputSubjectLinesProps = {
+    subjectLines: string[]
+}
+
+export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesProps) {
     return (
-      <div className={"output-subject-lines"}>
-          <ol>
-              <li>Inquiry: Free access to Meta offices</li>
-              <li>Job application for open position as care taker</li>
-              <li>RE: Are Meta offices' toilets public?</li>
-          </ol>
-      </div>
+        <div className={"output-subject-lines"}>
+            if (subjectLines) {
+            <ol>
+                <li>{subjectLines[0] ?? ""}</li>
+                <li>{subjectLines[1] ?? ""}</li>
+                <li>{subjectLines[2]}?? ""</li>
+            </ol>
+        } else {
+            // alert? oder evtl. sogar material ui alert
+        }
+        </div>
     );
 }
