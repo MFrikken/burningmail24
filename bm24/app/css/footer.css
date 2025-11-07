@@ -1,8 +1,28 @@
 .footer {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
     margin-left: 25%;
     margin-right: 25%;
+    color: black;
+    font-size: 14px;
+}
+
+a:visited {
+    color: inherit;
+}
+
+.disclaimer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    color: blue;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid rgba(168, 168, 168, 0.8);
+    width: 50%;
+    margin-top: 2rem;
 }

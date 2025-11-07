@@ -1,3 +1,4 @@
+import "../css/body.css";
 import OutputSubjectLines from "@/app/components/output-subject-lines";
 import InputEmailBody from "@/app/components/input-email-body";
 import {useEffect, useState} from "react";
@@ -16,13 +17,11 @@ export default function Body() {
     }, []);
 
     return (
-        <div>
-            {subjects.length <= 0 || subjects.length > 3 ? (
-                <div></div>
-            ) : (
+        <div className={"body"}>
+            <div className={"panel"}>
                 <OutputSubjectLines subjectLines={subjects}/>
-            )}
-            <InputEmailBody sampleMail={sampleMailbody}/>
+                <InputEmailBody sampleMail={sampleMailbody}/>
+            </div>
         </div>
     );
 }

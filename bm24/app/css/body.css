@@ -1,0 +1,13 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* both panels share same width */
+.output-subject-lines,
+.input-email-body {
+    width: 100%;
+    max-width: 100%; /* controls shared width */
+    box-sizing: border-box;
+}
