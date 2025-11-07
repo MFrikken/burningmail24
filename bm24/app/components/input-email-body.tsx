@@ -3,9 +3,10 @@ import {useState} from "react";
 
 type InputEmailBodyProps = {
     sampleMail: string;
+    fetchRequest: (mailbody: string) => void;
 }
 
-export default function InputEmailBody({sampleMail}: InputEmailBodyProps) {
+export default function InputEmailBody({sampleMail, fetchRequest}: InputEmailBodyProps) {
 
     const [mailbody, setMailbody] = useState('');
 
@@ -14,31 +15,7 @@ export default function InputEmailBody({sampleMail}: InputEmailBodyProps) {
             alert('The mailbody must not be empty! \nPlease input your mail into the textbox.');
             return;
         }
-
-        try {
-            const response = await fetch('/api/subject/generate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    mailbody: mailbody,
-                }),
-            });
-
-            if (!response.ok) {
-                const error = await response.json().catch(() => ({
-                    error: "Unknown error"
-                }));
-                throw new Error("An error occurred while processing your request: \n" + "[" + response.status + "] " + error.error);
-            }
-            const subjectLines = await response.json();
-
-            // display subject lines
-            alert("Success:" + subjectLines);
-        } catch (error) {
-            alert(error);
-        }
+        fetchRequest(mailbody);
     }
 
     return (
