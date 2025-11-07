@@ -5,8 +5,8 @@ export default function InputEmailBody() {
 
     const [mailbody, setMailbody] = useState('');
 
-    const submit = async ()=> {
-        if (mailbody === null || mailbody === '') {
+    const submit = async () => {
+        if (mailbody === '') {
             alert('The mailbody must not be empty! \nPlease input your mail into the textbox.');
             return;
         }
@@ -23,16 +23,16 @@ export default function InputEmailBody() {
             });
 
             if (!response.ok) {
-                const error = await response.json().catch(() => {
-                });
-                throw new Error("An error occured while processing your request: \n" + "[" + response.status + "] " +  error.error);
+                const error = await response.json().catch(() => ({
+                    error: "Unknown error"
+                }));
+                throw new Error("An error occurred while processing your request: \n" + "[" + response.status + "] " + error.error);
             }
             const subjectLines = await response.json();
 
             // display subject lines
-            alert("Sucess:" + subjectLines);
-        }
-            catch(error) {
+            alert("Success:" + subjectLines);
+        } catch (error) {
             alert(error);
         }
     }
