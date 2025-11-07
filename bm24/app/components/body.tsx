@@ -7,7 +7,7 @@ import {emails} from "../../public/emails"
 export default function Body() {
 
     const [sampleMailbody, setSampleMailbody] = useState<string>("");
-    const [subjects, setSubjects] = useState([]);
+    const [subjects, setSubjects] = useState<string[]>([]);
 
     useEffect(() => {
         if (emails.length > 0) {
