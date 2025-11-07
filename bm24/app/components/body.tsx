@@ -3,7 +3,6 @@ import OutputSubjectLines from "@/app/components/output-subject-lines";
 import InputEmailBody from "@/app/components/input-email-body";
 import {useEffect, useState} from "react";
 import {emails} from "../../public/emails"
-import generate from "@/pages/api/subject/generate";
 
 export default function Body() {
 
@@ -36,7 +35,6 @@ export default function Body() {
         } catch (error) {
             alert(error);
         }
-
     };
 
     useEffect(() => {
