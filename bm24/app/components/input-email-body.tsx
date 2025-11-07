@@ -1,7 +1,11 @@
 import "../css/input-email-body.css";
 import {useState} from "react";
 
-export default function InputEmailBody() {
+type InputEmailBodyProps = {
+    sampleMail: string;
+}
+
+export default function InputEmailBody({sampleMail}: InputEmailBodyProps) {
 
     const [mailbody, setMailbody] = useState('');
 
@@ -42,7 +46,7 @@ export default function InputEmailBody() {
             <h3 className={"input-header"}>Input your email body here</h3>
             <textarea
                 className={"input-text-area"}
-                placeholder={"Dear Mr. Zuckerberg, ..."}
+                placeholder={sampleMail}
                 maxLength={500}
                 autoFocus={true}
                 cols={80}
