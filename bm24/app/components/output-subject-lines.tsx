@@ -7,13 +7,9 @@ type OutputSubjectLinesProps = {
 export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesProps) {
     return (
         <div className="output-subject-lines">
-            {subjectLines.length <= 0 && subjectLines.length > 3 ? (
-                <span>ALARM!</span>
-            ) : (
-                subjectLines.map((subj, i) => (
-                    <div className={"subject"} key={i}>{i+1}: {subj}</div>
-                ))
-            )}
+            {subjectLines.map((subj, i) => (
+                <div className={"subject"} key={i}>{i + 1}: {subj}</div>
+            ))}
         </div>
 
     );
