@@ -8,3 +8,10 @@
     text-align: left;
     padding: 2rem 0;
 }
+
+.subject {
+    margin: 0.5rem;
+    padding: 0.3rem;
+    background: yellow;
+    font-weight: bold;
+}

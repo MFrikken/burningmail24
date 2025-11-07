@@ -6,16 +6,15 @@ type OutputSubjectLinesProps = {
 
 export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesProps) {
     return (
-        <div className={"output-subject-lines"}>
-            if (subjectLines) {
-            <ol>
-                <li>{subjectLines[0] ?? ""}</li>
-                <li>{subjectLines[1] ?? ""}</li>
-                <li>{subjectLines[2]}?? ""</li>
-            </ol>
-        } else {
-            // alert? oder evtl. sogar material ui alert
-        }
+        <div className="output-subject-lines">
+            {subjectLines.length <= 0 && subjectLines.length > 3 ? (
+                <span>ALARM!</span>
+            ) : (
+                subjectLines.map((subj, i) => (
+                    <div className={"subject"} key={i}>{i+1}: {subj}</div>
+                ))
+            )}
         </div>
+
     );
 }
