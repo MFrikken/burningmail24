@@ -2,14 +2,17 @@ import "../css/body.css";
 import OutputSubjectLines from "@/app/components/output-subject-lines";
 import InputEmailBody from "@/app/components/input-email-body";
 import {useEffect, useState} from "react";
-import {emails} from "../../public/emails"
+import {emails} from "@/public/emails"
+import LoadingSpinner from "@/app/components/loading-spinner";
 
 export default function Body() {
 
     const [sampleMailbody, setSampleMailbody] = useState<string>("");
     const [subjects, setSubjects] = useState<string[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const generateSubjects = async (mailbody: string) => {
+        setIsLoading(true);
         try {
             const response = await fetch('/api/subject/generate', {
                 method: 'POST',
@@ -20,6 +23,8 @@ export default function Body() {
                     mailbody: mailbody,
                 }),
             });
+
+            setIsLoading(false);
 
             if (!response.ok) {
                 const error = await response.json().catch(() => ({
@@ -46,7 +51,13 @@ export default function Body() {
     return (
         <div className={"body"}>
             <div className={"panel"}>
-                <OutputSubjectLines subjectLines={subjects}/>
+                {isLoading ? (
+                    <div className={"spinner-container"}>
+                        <LoadingSpinner/>
+                    </div>
+                ) : (
+                    <OutputSubjectLines subjectLines={subjects}/>
+                )}
                 <InputEmailBody sampleMail={sampleMailbody} fetchRequest={generateSubjects}/>
             </div>
         </div>
