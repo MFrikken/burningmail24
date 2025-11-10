@@ -28,12 +28,11 @@ export default function Body() {
                 throw new Error("An error occurred while processing your request: \n" + "[" + response.status + "] " + error.error);
             }
             const subjectLines = await response.json();
-            console.log(subjectLines);
 
             // display subject lines
             setSubjects(subjectLines.subjects);
         } catch (error) {
-            alert(error);
+            alert(error instanceof Error ? error.message : String(error));
         }
     };
 
