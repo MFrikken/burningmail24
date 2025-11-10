@@ -10,7 +10,7 @@ While privacy and security are top priorities, we want to put emphasis on usabil
 
 ### Privacy & Security
 Your data stays yours.
-We run our own self-trained LLM to ensure high-quality generation, and all traffic is SSL-encrypted.
+This project uses a locally hosted free, open-source [language model](https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct) for subject line generation, and all traffic is SSL-encrypted.
 No user data is stored; only system and performance metrics are monitored.
 We build things the way we’d want to use them — with integrity and care for good engineering.
 
