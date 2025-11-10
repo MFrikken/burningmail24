@@ -1,4 +1,4 @@
-<img src="logo/20251105_1719_Retro%20Flaming%20Envelope_simple_compose_01k99n0r54esaafc49980pvw5p.png" alt="logo" width="64"/>
+<img src="/bm24/public/logo.svg" alt="logo" width="64"/>
 
 # burningmail24.live
 A free email subject line generator.
