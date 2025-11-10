@@ -35,7 +35,7 @@ export async function generateSubject(
             top_p: 0.9,
         }) as any;
 
-        const assistantMsg = output?.[0]?.generated_text?.find((key: { role: string, content: string} ) => key.role === "assistant");
+        const assistantMsg = output?.[0]?.generated_text?.find((key: { role: string; content: string} ) => key.role === "assistant");
         if (assistantMsg && assistantMsg.content) {
             results.push(assistantMsg.content.trim());
         }
