@@ -1,0 +1,35 @@
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.spinner {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #b0b0b0;
+    box-shadow: 24px 0 #888888, -24px 0 #e0e0e0;
+    position: relative;
+    animation: flash 0.5s ease-out infinite alternate;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes flash {
+    0% {
+        background-color: #999999;
+        box-shadow: 24px 0 #777777, -24px 0 #eeeeee;
+    }
+    50% {
+        background-color: #e0e0e0;
+        box-shadow: 24px 0 #999999, -24px 0 #777777;
+    }
+    100% {
+        background-color: #999999;
+        box-shadow: 24px 0 #eeeeee, -24px 0 #888888;
+    }
+}

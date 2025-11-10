@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Body from "@/app/components/body";
