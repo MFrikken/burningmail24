@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="footer">
                 <span className={"disclaimer"}>This site collects no personal data and uses no cookies. </span>
                 <a href="https://github.com/MFrikken/burningmail24" target="_blank" rel="noopener noreferrer">
-                    ©2025 burningmail24.live | Licensed under MIT License
+                    ©2025 burningmail24.live | Published under MIT License
                 </a>
             </div>
         </div>
