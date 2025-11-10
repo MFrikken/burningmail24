@@ -4,10 +4,9 @@
     align-items: center;
 }
 
-/* both panels share same width */
 .output-subject-lines,
 .input-email-body {
     width: 100%;
-    max-width: 100%; /* controls shared width */
+    max-width: 100%;
     box-sizing: border-box;
 }
