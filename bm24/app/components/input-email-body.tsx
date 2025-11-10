@@ -15,7 +15,11 @@ export default function InputEmailBody({sampleMail, fetchRequest}: InputEmailBod
             alert('The mailbody must not be empty! \nPlease input your mail into the textbox.');
             return;
         }
-        fetchRequest(mailbody);
+        try {
+            fetchRequest(mailbody);
+        } catch (error) {
+            alert('Sorry, but an error occurred while processing your request.');
+        }
     }
 
     return (
