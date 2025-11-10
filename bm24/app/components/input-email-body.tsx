@@ -29,7 +29,7 @@ export default function InputEmailBody({sampleMail, fetchRequest}: InputEmailBod
                 <textarea
                     className={"input-text-area"}
                     placeholder={sampleMail}
-                    maxLength={500}
+                    maxLength={9999}
                     autoFocus={true}
                     cols={80}
                     rows={20}
