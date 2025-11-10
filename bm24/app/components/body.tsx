@@ -24,8 +24,6 @@ export default function Body() {
                 }),
             });
 
-            setIsLoading(false);
-
             if (!response.ok) {
                 const error = await response.json().catch(() => ({
                     error: "Unknown error"
@@ -38,6 +36,8 @@ export default function Body() {
             setSubjects(subjectLines.subjects);
         } catch (error) {
             alert(error instanceof Error ? error.message : String(error));
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -52,9 +52,7 @@ export default function Body() {
         <div className={"body"}>
             <div className={"panel"}>
                 {isLoading ? (
-                    <div className={"spinner-container"}>
-                        <LoadingSpinner/>
-                    </div>
+                    <LoadingSpinner/>
                 ) : (
                     <OutputSubjectLines subjectLines={subjects}/>
                 )}
