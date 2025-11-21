@@ -20,24 +20,12 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          source: "."
+          target: "/var/www/app"
           script: |
-              # ensure directory exists
-              if [ ! -d /var/www/app/.git ]; then
-              rm -rf /var/www/app
-              mkdir -p /var/www/app
-              git clone git@github.com:MFrikken/burningmail24.git /var/www/app
-              else
-              cd /var/www/app
-              git fetch origin
-              git reset --hard origin/main
-              fi
-
-              cd /var/www/app
-
-              docker build -t app:latest .
-
-              docker stop app || true
-              docker rm app || true
-
-              docker run -d --name app app:latest
+            cd /var/www/app
+            docker build -t app:latest .
+            docker stop app || true
+            docker rm app || true
+            docker run -d --name app app:latest
 
