@@ -23,7 +23,7 @@ jobs:
           script: |
             cd /var/www/app
             git pull origin main
-            docker build -t app:latest /bm24
+            docker build -t app:latest ./bm24
             docker stop app || true
             docker rm app || true
             docker run -d --name app app:latest
