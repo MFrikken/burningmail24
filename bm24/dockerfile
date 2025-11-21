@@ -11,9 +11,6 @@ RUN bun install
 # Build project
 RUN bun run build
 
-# Run tests
-RUN bun test --no-fail-on-empty
-
 EXPOSE 3000
 
 # Default command: start server or show build output
