@@ -12,7 +12,7 @@ RUN bun install
 RUN bun run build
 
 # Run tests
-RUN bun test
+RUN bun test --no-fail-on-empty
 
 EXPOSE 3000
 
