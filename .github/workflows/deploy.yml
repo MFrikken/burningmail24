@@ -21,9 +21,10 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           source: "."
-          target: "/var/www/app"
+          target: "/var/www/app/"
           script: |
-            cd /var/www/app
+            ls /var/www/app
+            cd /var/www/app/bm24
             docker build -t app:latest .
             docker stop app || true
             docker rm app || true
