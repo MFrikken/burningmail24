@@ -2,11 +2,19 @@ FROM oven/bun:latest
 
 WORKDIR /ci
 
-# Copy everything into container
-COPY . .
+COPY package*.json ./
+COPY bun.lock ./
 
 # Install dependencies
 RUN bun install
+
+# Force model download at build time
+RUN node -e "import('@huggingface/transformers').then(async t => { \
+    const pipe = await t.pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct'); \
+})"
+
+# Copy everything into container
+COPY . .
 
 # Build project
 RUN bun run build
