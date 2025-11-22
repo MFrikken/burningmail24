@@ -34,5 +34,5 @@ jobs:
             docker build -t app:latest .
             docker stop app || true
             docker rm app || true
-            docker run -d --name app app:latest
+            docker run -d --name app --network web app:latest
 
