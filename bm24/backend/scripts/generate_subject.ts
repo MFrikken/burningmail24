@@ -1,4 +1,4 @@
-import {pipeline} from "@huggingface/transformers";
+import { pipeline } from "@huggingface/transformers";
 
 // Docs: https://www.npmjs.com/package/@xenova/transformers
 
@@ -7,13 +7,19 @@ import {pipeline} from "@huggingface/transformers";
  * Generate subject suggestions for an email using a small multilingual model.
  * Lightweight and runs locally via transformers.js.
  */
-export async function generateSubject(
-    mailbody: string,
-    kwargs: { count?: number } = {}
-): Promise<string[]> {
-    const {count = 3} = kwargs;
 
-    const pipe = await pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct');
+let pipePromise: Promise<any> | null = null;
+
+async function getPipe() {
+    if (!pipePromise) {
+        pipePromise = pipeline('text-generation', 'HuggingFaceTB/SmolLM2-360M-Instruct');
+    }
+    return pipePromise;
+}
+
+export async function generateSubject(mailbody: string, kwargs: { count?: number } = {}): Promise<string[]> {
+    const { count = 3 } = kwargs;
+    const pipe = await getPipe();
 
     const messages = [
         {
@@ -35,7 +41,7 @@ export async function generateSubject(
             top_p: 0.9,
         }) as any;
 
-        const assistantMsg = output?.[0]?.generated_text?.find((key: { role: string; content: string} ) => key.role === "assistant");
+        const assistantMsg = output?.[0]?.generated_text?.find((key: { role: string; content: string }) => key.role === "assistant");
         if (assistantMsg && assistantMsg.content) {
             results.push(assistantMsg.content.trim());
         }
