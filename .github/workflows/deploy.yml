@@ -1,4 +1,4 @@
-name: deploy
+name: "Deploy"
 
 on:
   push:
@@ -30,9 +30,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /var/www/app/bm24
-            docker build -t app:latest .
-            docker stop app || true
-            docker rm app || true
-            docker run -d --name app --network web app:latest
+            cd /var/www/app
+            docker compose down --remove-orphans
+            docker compose build --no-cache
+            docker compose up -d
 
