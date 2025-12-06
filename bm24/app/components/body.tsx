@@ -30,10 +30,10 @@ export default function Body() {
                 }));
                 throw new Error("An error occurred while processing your request: \n" + "[" + response.status + "] " + error.error);
             }
-            const subjectLines = await response.json();
+            const data = await response.json();
 
-            // display subject lines
-            setSubjects(subjectLines.subjects);
+            // data.subjects.output = string[]
+            setSubjects(data.subjects.output);
         } catch (error) {
             alert(error instanceof Error ? error.message : String(error));
         } finally {

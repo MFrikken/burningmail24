@@ -1,0 +1,16 @@
+FROM node:20-slim
+
+WORKDIR /app
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY server.js ./server.js
+
+# Preload the model at build time
+RUN node -e "import('fs'); import('process'); import('@huggingface/transformers').then(({ pipeline }) => pipeline('text-generation','HuggingFaceTB/SmolLM2-360M-Instruct'));"
+
+RUN export TRANSFORMERS_CACHE=/root/.cache/huggingface/transformers \
+ && node -e "import('@huggingface/transformers').then(m => m.pipeline('text-generation','HuggingFaceTB/SmolLM2-360M-Instruct',{localFilesOnly:false})).then(()=>console.log('Model preloaded'))"
+
+EXPOSE 5005
+CMD ["node", "server.js"]
