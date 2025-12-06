@@ -12,9 +12,14 @@ services:
     container_name: llm-service
     ports:
       - "5005:5005"
+    volumes:
+      - hf_cache:/root/.cache/huggingface
     networks:
       - bm24
 
 networks:
   bm24:
     driver: bridge
+
+volumes: 
+  hf_cache: 
