@@ -1,15 +1,26 @@
-'use client';
-
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Body from "@/app/components/body";
 
+export function generateMetadata() {
+  let title = "burningmail24";
+
+  const rdm = Math.random();
+  if (rdm < 0.025) {
+    title = "burn your mail 24"
+  }
+
+  return {
+    title
+  };
+}
+
 export default function Home() {
   return (
-      <div>
-          <Header />
-          <Body />
-          <Footer />
-      </div>
+    <div>
+      <Header />
+      <Body />
+      <Footer />
+    </div>
   );
 }

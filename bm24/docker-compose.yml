@@ -1,0 +1,25 @@
+services:
+  bm24:
+    build: .
+    container_name: bm24
+    ports:
+      - "3000:3000"
+    networks:
+      - bm24
+
+  llm-service:
+    build: ./llm-service
+    container_name: llm-service
+    ports:
+      - "5005:5005"
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    networks:
+      - bm24
+
+networks:
+  bm24:
+    driver: bridge
+
+volumes: 
+  hf_cache: 
