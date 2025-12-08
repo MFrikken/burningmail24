@@ -1,3 +1,5 @@
+'use client';
+
 import "../css/body.css";
 import OutputSubjectLines from "@/app/components/output-subject-lines";
 import InputEmailBody from "@/app/components/input-email-body";
