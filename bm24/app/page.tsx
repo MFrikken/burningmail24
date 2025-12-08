@@ -1,13 +1,13 @@
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import Body from "@/app/components/body";
-import { titles } from "@/public/titles"
 
 export function generateMetadata() {
   let title = "burningmail24";
-  
-  if (titles.length > 0) {
-    title = titles[Math.floor(Math.random() * titles.length)];
+
+  const rdm = Math.random();
+  if (rdm < 0.025) {
+    title = "burn your mail 24"
   }
 
   return {
