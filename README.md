@@ -18,3 +18,55 @@ We build things the way we’d want to use them — with integrity and care for 
 The project is open source, but active development remains in our hands.
 If you have feature requests or want to report a bug, feel free to contact us.
 If you’d like to show appreciation for our work, you can [buy us a coffee](https://paypal.me/frikken).
+
+## Installation (Contributor Setup)
+
+This project consists of a Next.js (TypeScript) application and a separate LLM service, both running on Bun. Both services have their own Dockerfiles and are orchestrated via `docker-compose.yml`.
+
+### Prerequisites
+- Docker  
+- Docker Compose  
+- Bun  
+
+### Clone the Repository
+```bash
+git clone https://github.com/MFrikken/burningmail24.git
+cd bm24/
+```
+
+### Install Dependencies
+#### Next.js App
+From `bm24/`:
+```bash
+bun install
+````
+
+#### LLM Service
+The LLM service is located in `bm24/llm-service/`:
+
+```bash
+cd bm24/llm-service
+bun install
+```
+
+### Running via Docker (Recommended)
+From `bm24/`: Start both services (Next.js app + LLM service) with:
+```bash
+docker-compose up --build
+```
+
+To start without rebuilding:
+```bash
+docker-compose up
+````
+
+### Local Development Without Docker
+From `bm24/`: Run Next.js backend
+```bash
+bun dev
+````
+
+From `bm24/llm-service/`: Run LLM Service
+```bash
+bun dev
+```
