@@ -1,12 +1,12 @@
 import "../css/input-email-body.css";
-import {useState} from "react";
+import { useState } from "react";
 
 type InputEmailBodyProps = {
     sampleMail: string;
     fetchRequest: (mailbody: string) => void;
 }
 
-export default function InputEmailBody({sampleMail, fetchRequest}: InputEmailBodyProps) {
+export default function InputEmailBody({ sampleMail, fetchRequest }: InputEmailBodyProps) {
 
     const [mailbody, setMailbody] = useState('');
 

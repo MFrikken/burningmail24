@@ -1,0 +1,60 @@
+/* Mobile portrait fix */
+@media (max-width: 600px) and (orientation: portrait) {
+
+    .header {
+        padding: 0rem 0 !important;
+    }
+
+    body .output-subject-lines {
+        width: 100%;
+        padding: 1rem;
+        height: auto;
+        align-items: stretch;
+    }
+
+    .subject,
+    .intro {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .body {
+        align-items: stretch;
+    }
+
+    body .input-email-body {
+        width: 100%;
+        padding: 0rem 1rem 0rem 0.5rem;
+        align-items: stretch;
+    }
+
+    .wrapper {
+        align-items: stretch;
+    }
+
+    .input-text-area {
+        width: 100%;
+    }
+
+    body .submit-button {
+        align-self: center;
+        transform: scale(1.5);
+        transform-origin: center;
+        margin-top: 0.3rem;
+    }
+
+    hr {
+        border: none;
+        border-top: 2px solid rgba(168, 168, 168, 0.8);
+        margin-top: 2rem;
+        width: 90% !important;
+    }
+
+    body .footer {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
