@@ -6,13 +6,6 @@
     }
 
     body .output-subject-lines {
-        width: 100%;
-        padding: 1rem;
-        height: auto;
-        align-items: stretch;
-    }
-
-    body .output-subject-lines {
         display: block;
         width: 100%;
         max-width: 100%;
@@ -25,7 +18,7 @@
         display: block;
         width: 100%;
         white-space: normal;
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
         box-sizing: border-box;
         text-align: center;
     }
@@ -59,7 +52,7 @@
     .footer-wrapper {
         width: 100%;
         margin-top: 2rem;
-        position: fixed;
+        position: sticky;
         bottom: 0;
     }
 
