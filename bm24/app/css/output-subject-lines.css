@@ -22,3 +22,13 @@
     background: yellow;
     font-weight: bold;
 }
+
+.clipboard-msg {
+    position: absolute;
+    top: 15%;
+    font-family: Arial;
+    font-size: 14px;
+    background-color: rgba(219, 219, 219, 0.8);
+    padding: 0.3rem;
+    z-index: 10; 
+}
