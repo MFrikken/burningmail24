@@ -12,12 +12,24 @@
         align-items: stretch;
     }
 
-    .subject,
-    .intro {
+    body .output-subject-lines {
+        display: block;
         width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    body .subject,
+    body .intro {
+        display: block;
+        width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
         box-sizing: border-box;
         text-align: center;
     }
+
 
     .body {
         align-items: stretch;

@@ -3,9 +3,8 @@ import "../css/output-subject-lines.css";
 type OutputSubjectLinesProps = {
     subjectLines: string[]
 }
-// {subjectLines}: OutputSubjectLinesProps
+
 export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesProps) {
-    //const subjectLines = ["test", "test", "test"];
     return (
         <div className="output-subject-lines">
             {subjectLines.length <= 0 ? (
