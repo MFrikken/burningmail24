@@ -14,6 +14,7 @@
     padding: 0.3rem;
     background: yellow;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .intro {
