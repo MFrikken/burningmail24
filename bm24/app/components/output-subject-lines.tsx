@@ -4,7 +4,7 @@ type OutputSubjectLinesProps = {
     subjectLines: string[]
 }
 
-export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesProps) {
+export default function OutputSubjectLines({ subjectLines }: OutputSubjectLinesProps) {
     return (
         <div className="output-subject-lines">
             {subjectLines.length <= 0 ? (
@@ -14,7 +14,6 @@ export default function OutputSubjectLines({subjectLines}: OutputSubjectLinesPro
                     <div className={"subject"} key={i}>{i + 1}: {subj}</div>
                 ))
             )}
-
         </div>
     );
 }
