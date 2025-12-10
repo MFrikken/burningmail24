@@ -13,7 +13,8 @@ export default function OutputSubjectLines({ subjectLines }: OutputSubjectLinesP
         navigator.clipboard.writeText(subj);
         setShowClipboardMsg(true);
         setTimeout(() => setShowClipboardMsg(false), 1500);
-    })
+    });
+  
     return (
         <div className="output-subject-lines">
             {subjectLines.length <= 0 ? (
