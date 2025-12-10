@@ -3,6 +3,9 @@
 # burningmail24.live
 A free email subject line generator.
 
+https://burningmail24.live
+https://bm24.live
+
 ## About
 [burningmail24.live](https://burningmail24.live)
 is a free website that uses a locally hosted language model to generate custom subject lines for emails.
