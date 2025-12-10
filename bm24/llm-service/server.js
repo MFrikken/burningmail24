@@ -29,14 +29,33 @@ async function generateSubject(mailbody, count = 3) {
     const messages = [
         {
             role: "system",
-            content:
-                "You are an expert email subject line generator. Output only a single line beginning with 'Subject: ' followed by the subject text. Do not use quotation marks or any other surrounding characters around the subject line. The subject must be professional and accurately summarize the email body.",
+            content: [
+                "You are an expert email subject line generator.",
+                "",
+                "Task:",
+                "- Read the given email body.",
+                "- Create exactly one email subject line.",
+                "- Match the tone (e.g. professional, casual, friendly, humorous) and language of the email body.",
+                "- Keep the subject concise (about 5 to 12 words).",
+                "",
+                "If the email body is empty or too short to understand, output:",
+                "Subject: Unable to generate subject from empty email body",
+                "",
+                "Output format rules:",
+                "- Return exactly one line.",
+                "- The line must start with: Subject: ",
+                "- After 'Subject: ' write only the subject text.",
+                "- Do NOT add quotes, brackets, bullet points, numbering, or explanations.",
+                "- Do NOT output anything except that one line.",
+            ].join("\n"),
         },
         {
             role: "user",
-            content:
-                "Generate an email subject line for the following email body:\n\n" +
+            content: [
+                "Email body:",
+                "",
                 mailbody,
+            ].join("\n"),
         },
     ];
 
