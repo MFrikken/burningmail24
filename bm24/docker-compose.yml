@@ -2,24 +2,53 @@ services:
   bm24:
     build: .
     container_name: bm24
-    ports:
-      - "3000:3000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     networks:
-      - bm24
+      - bm24-internal
 
   llm-service:
     build: ./llm-service
     container_name: llm-service
-    ports:
-      - "5005:5005"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - hf_cache:/root/.cache/huggingface
     networks:
-      - bm24
+      - bm24-internal
+
+  caddy: 
+    image: caddy:2
+    container_name: caddy
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "80:80"
+      - "443:443" 
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - public
+      - bm24-internal
 
 networks:
-  bm24:
+  public:
+    driver: bridge
+  bm24-internal:
     driver: bridge
 
 volumes: 
   hf_cache: 
+  caddy_data:
+  caddy_config:
