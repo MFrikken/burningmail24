@@ -19,23 +19,25 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - hf_cache:/root/.cache/huggingface
+      - ./model_cache:/root/.cache/huggingface:ro
     networks:
       - bm24-internal
 
   caddy: 
     image: caddy:2
     container_name: caddy
-    read_only: true
     cap_drop:
-      - ALL
+      - SETPCAP
+      - MKNOD
+      - AUDIT_WRITE
+      - CHOWN
     security_opt:
       - no-new-privileges:true
     ports:
       - "80:80"
       - "443:443" 
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
     networks:
@@ -47,6 +49,7 @@ networks:
     driver: bridge
   bm24-internal:
     driver: bridge
+    internal: true
 
 volumes: 
   hf_cache: 

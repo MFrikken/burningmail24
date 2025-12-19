@@ -1,9 +1,5 @@
 FROM oven/bun:1 AS Build
 
-RUN groupadd -g 1000 bm24 && useradd -m -u 1001 -g bm24 next
-
-USER next
-
 WORKDIR /app
 
 COPY --chown=next:bm24 . .
@@ -15,15 +11,15 @@ RUN bun run build
 
 FROM oven/bun:1 AS Production
 
-RUN groupadd -g 1000 bm24 && useradd -m -u 1001 -g bm24 next
+WORKDIR /app
+
+RUN groupadd bm24 && useradd -m -g bm24 next
 
 USER next
 
-WORKDIR /app
-
-COPY --from=build /app/.next/standalone ./
-COPY --from=build /app/.next/static ./.next/static
-COPY --from=build /app/public ./public
+COPY --from=build --chown=next:bm24 /app/.next/standalone ./
+COPY --from=build --chown=next:bm24 /app/.next/static ./.next/static
+COPY --from=build --chown=next:bm24 /app/public ./public
 
 EXPOSE 3000
 
