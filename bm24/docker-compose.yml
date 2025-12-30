@@ -7,6 +7,8 @@ services:
       - ALL
     security_opt:
       - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
     networks:
       - bm24-internal
 
@@ -19,7 +21,7 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ./model_cache:/home/llm/.cache/huggingface:ro
+      - ./llm-service/model_cache:/home/llm/.cache/huggingface:ro
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
     networks:
@@ -29,10 +31,9 @@ services:
     image: caddy:2
     container_name: caddy
     cap_drop:
-      - SETPCAP
-      - MKNOD
-      - AUDIT_WRITE
-      - CHOWN
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
     security_opt:
       - no-new-privileges:true
     ports:

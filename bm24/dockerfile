@@ -2,7 +2,7 @@ FROM oven/bun:1 AS Build
 
 WORKDIR /app
 
-COPY --chown=next:bm24 . .
+COPY . .
 
 RUN bun install
 
@@ -17,9 +17,9 @@ RUN groupadd bm24 && useradd -m -g bm24 next
 
 USER next
 
-COPY --from=build --chown=next:bm24 /app/.next/standalone ./
-COPY --from=build --chown=next:bm24 /app/.next/static ./.next/static
-COPY --from=build --chown=next:bm24 /app/public ./public
+COPY --from=Build --chown=next:bm24 /app/.next/standalone ./
+COPY --from=Build --chown=next:bm24 /app/.next/static ./.next/static
+COPY --from=Build --chown=next:bm24 /app/public ./public
 
 EXPOSE 3000
 
