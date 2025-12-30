@@ -19,7 +19,7 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ./model_cache:/root/.cache/huggingface:ro
+      - ./model_cache:/home/llm/.cache/huggingface:ro
     networks:
       - bm24-internal
 
