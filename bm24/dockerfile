@@ -1,17 +1,26 @@
-FROM oven/bun:1
+FROM oven/bun:1 AS Build
 
-WORKDIR /ci
+WORKDIR /app
 
-# Copy everything into container
 COPY . .
 
-# Install dependencies
 RUN bun install
 
-# Build project
 RUN bun run build
+
+
+FROM oven/bun:1 AS Production
+
+WORKDIR /app
+
+RUN groupadd bm24 && useradd -m -g bm24 next
+
+USER next
+
+COPY --from=Build --chown=next:bm24 /app/.next/standalone ./
+COPY --from=Build --chown=next:bm24 /app/.next/static ./.next/static
+COPY --from=Build --chown=next:bm24 /app/public ./public
 
 EXPOSE 3000
 
-# Default command: start server or show build output
-CMD ["bun", "run", "start"]
+CMD ["bun", "server.js"]
