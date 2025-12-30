@@ -32,7 +32,7 @@ This project consists of a Next.js (TypeScript) application and a separate LLM s
 - Bun  
 
 ### Clone the Repository
-```bash
+```sh
 git clone https://github.com/MFrikken/burningmail24.git
 cd bm24/
 ```
@@ -40,14 +40,14 @@ cd bm24/
 ### Install Dependencies
 #### Next.js App
 From `bm24/`:
-```bash
+```sh
 bun install
 ````
 
 #### LLM Service
 The LLM service is located in `bm24/llm-service/`:
 
-```bash
+```sh
 cd bm24/llm-service
 bun install
 ```
@@ -59,17 +59,17 @@ docker-compose up --build
 ```
 
 To start without rebuilding:
-```bash
+```sh
 docker-compose up
 ````
 
 ### Local Development Without Docker
 From `bm24/`: Run Next.js backend
-```bash
+```sh
 bun dev
 ````
 
 From `bm24/llm-service/`: Run LLM Service
-```bash
+```sh
 bun dev
 ```
