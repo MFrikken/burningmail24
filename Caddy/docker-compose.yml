@@ -16,5 +16,6 @@ networks:
     driver: bridge
   bm24-internal:
     external: true
-# create the local network before starting the containers:
-# docker network create --driver bridge --internal bm24-internal
+    # bm24-internal network must be created before starting the containers (see bm24/docker-compose.yml)
+    # if you haven't done so yet, run:
+    # docker network create --driver bridge --internal bm24-internal
