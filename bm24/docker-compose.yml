@@ -20,6 +20,8 @@ services:
       - ALL
     security_opt:
       - no-new-privileges:true
+    volumes:
+      - ./llm-service/model_cache:/app/model_cache:ro
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
     networks:

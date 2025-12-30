@@ -18,7 +18,7 @@ const server = Fastify({
 let pipe = null;
 
 async function init() {
-    pipe = await pipeline("text-generation", "./model_cache/HuggingFaceTB/SmolLM2-360M-Instruct/", {
+    pipe = await pipeline("text-generation", "./model_cache/SmolLM2-360M-Instruct/", {
         cache_dir: "./model_cache",
         localFilesOnly: true,
     });
@@ -29,14 +29,30 @@ async function generateSubject(mailbody, count = 3) {
     const messages = [
         {
             role: "system",
-            content:
-                "You are an expert email subject line generator. Output only a single line beginning with 'Subject: ' followed by the subject text. Do not use quotation marks or any other surrounding characters around the subject line. The subject must be professional and accurately summarize the email body.",
+            content: [
+                "You are an expert email subject line generator.",
+                "",
+                "Task:",
+                "- Read the given email body.",
+                "- Create exactly one email subject line.",
+                "- Match the tone (e.g. professional, casual, friendly, humorous) and language of the email body.",
+                "- Keep the subject concise (maximal up to 12 words).",
+                "",
+                "Output format rules:",
+                "- Return exactly one line.",
+                "- Write only the subject text.",
+                "- Do NOT add quotes, brackets, bullet points, numbering, or explanations.",
+                "- Do NOT include the prefix 'Subject:'.",
+                "- Do NOT output anything except that one line.",
+            ].join("\n"),
         },
         {
             role: "user",
-            content:
-                "Generate an email subject line for the following email body:\n\n" +
+            content: [
+                "Email body:",
+                "",
                 mailbody,
+            ].join("\n"),
         },
     ];
 
