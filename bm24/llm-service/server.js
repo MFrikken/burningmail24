@@ -1,7 +1,7 @@
 import Fastify from "fastify";
 import { pipeline } from "@huggingface/transformers";
 
-// Docs: https://www.npmjs.com/package/@xenova/transformers
+// Docs: https://www.npmjs.com/package/@huggingface/transformers
 
 /**
  * Generate subject suggestions for an email using a small multilingual model.
