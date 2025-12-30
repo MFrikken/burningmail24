@@ -18,7 +18,7 @@ const server = Fastify({
 let pipe = null;
 
 async function init() {
-    pipe = await pipeline("text-generation", "./model_cache/HuggingFaceTB/SmolLM2-360M-Instruct/", {
+    pipe = await pipeline("text-generation", "./model_cache/SmolLM2-360M-Instruct/", {
         cache_dir: "./model_cache",
         localFilesOnly: true,
     });
