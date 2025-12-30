@@ -31,6 +31,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/app/bm24
+            docker network create --driver bridge --internal bm24-internal || true
             docker-compose down
             docker-compose build
             docker-compose up -d
