@@ -6,7 +6,12 @@ COPY package.json bun.lock ./
 
 RUN bun install
 
-COPY server.js ./server.js
+RUN groupadd bm24 && useradd -m -g bm24 llm
+
+USER llm
+
+COPY --chown=llm:bm24 server.js ./server.js
+COPY --chown=llm:bm24 model_cache ./model_cache:ro
 
 EXPOSE 5005
 
