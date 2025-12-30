@@ -17,8 +17,11 @@ const server = Fastify({
  */
 let pipe = null;
 
+// /home/llm-service/.cache/huggingface/HuggingFaceTB/SmolLM2-360M-Instruct/
+// ./model_cache/HuggingFaceTB/SmolLM2-360M-Instruct/
 async function init() {
-    pipe = await pipeline("text-generation", "/home/llm/.cache/huggingface/HuggingFaceTB/SmolLM2-360M-Instruct", {
+    pipe = await pipeline("text-generation", "./model_cache/HuggingFaceTB/SmolLM2-360M-Instruct/", {
+        cache_dir: "./model_cache",
         localFilesOnly: true,
     });
 }

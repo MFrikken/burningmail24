@@ -21,7 +21,7 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ./llm-service/model_cache:/home/llm/.cache/huggingface:ro
+      - ./llm-service/model_cache:/home/llm-service/.cache/huggingface:ro
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
     networks:
@@ -30,4 +30,4 @@ services:
 networks:
   bm24-internal:
     driver: bridge
-    internal: true
+    external: true

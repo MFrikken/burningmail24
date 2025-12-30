@@ -11,6 +11,7 @@ RUN groupadd bm24 && useradd -m -g bm24 llm
 USER llm
 
 COPY --chown=llm:bm24 server.js ./server.js
+COPY --chown=llm:bm24 model_cache ./model_cache
 
 EXPOSE 5005
 
