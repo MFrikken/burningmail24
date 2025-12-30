@@ -20,6 +20,8 @@ services:
       - no-new-privileges:true
     volumes:
       - ./model_cache:/home/llm/.cache/huggingface:ro
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
     networks:
       - bm24-internal
 
@@ -52,6 +54,5 @@ networks:
     internal: true
 
 volumes: 
-  hf_cache: 
   caddy_data:
   caddy_config:
