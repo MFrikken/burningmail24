@@ -2,24 +2,32 @@ services:
   bm24:
     build: .
     container_name: bm24
-    ports:
-      - "3000:3000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
     networks:
-      - bm24
+      - bm24-internal
 
   llm-service:
     build: ./llm-service
     container_name: llm-service
-    ports:
-      - "5005:5005"
-    volumes:
-      - hf_cache:/root/.cache/huggingface
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=100m
     networks:
-      - bm24
+      - bm24-internal
 
 networks:
-  bm24:
+  bm24-internal:
     driver: bridge
-
-volumes: 
-  hf_cache: 
+    external: true
+    # create the local network before starting the containers:
+    # docker network create --driver bridge --internal bm24-internal

@@ -1,14 +1,12 @@
 import Fastify from "fastify";
 import { pipeline } from "@huggingface/transformers";
 
-// Docs: https://www.npmjs.com/package/@xenova/transformers
-
+// Docs: https://www.npmjs.com/package/@huggingface/transformers
 
 /**
  * Generate subject suggestions for an email using a small multilingual model.
  * Lightweight and runs locally via transformers.js.
  */
-
 
 const server = Fastify({
     logger: true,
@@ -20,7 +18,8 @@ const server = Fastify({
 let pipe = null;
 
 async function init() {
-    pipe = await pipeline("text-generation", "HuggingFaceTB/SmolLM2-360M-Instruct", {
+    pipe = await pipeline("text-generation", "./model_cache/HuggingFaceTB/SmolLM2-360M-Instruct/", {
+        cache_dir: "./model_cache",
         localFilesOnly: true,
     });
 }

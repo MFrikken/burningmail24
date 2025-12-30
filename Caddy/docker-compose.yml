@@ -1,0 +1,21 @@
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: caddy
+    networks:
+      - bm24-internal
+      - bm24-public
+    ports:
+      - "0.0.0.0:8080:8080"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    restart: unless-stopped
+
+networks:
+  bm24-public:
+    driver: bridge
+  bm24-internal:
+    external: true
+    # bm24-internal network must be created before starting the containers (see bm24/docker-compose.yml)
+    # if you haven't done so yet, run:
+    # docker network create --driver bridge --internal bm24-internal
