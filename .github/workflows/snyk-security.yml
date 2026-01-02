@@ -74,7 +74,7 @@ jobs:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
       
-        run: snyk container monitor bm24 --file=Dockerfile -d && snyk container monitor llm-service --file=Dockerfile -d
+        run: snyk container test bm24 --file=Dockerfile -d && snyk container test llm-service --file=Dockerfile -d
 
         # Push the Snyk Code results into GitHub Code Scanning tab
       - name: Upload results
