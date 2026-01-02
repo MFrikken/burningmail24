@@ -25,10 +25,6 @@ on:
 permissions:
   contents: read
 
-env:
-  # This is where you will need to introduce the Snyk API token created with your Snyk account
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
 jobs:
   snyk:
     permissions:
@@ -49,6 +45,10 @@ jobs:
         with:
           node-version: 24.9.0
 
+        env:
+          # This is where you will need to introduce the Snyk API token created with your Snyk account
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
       - name: Snyk SAST
@@ -69,6 +69,11 @@ jobs:
         
         # Runs Snyk Container (Container and SCA) analysis and uploads result to Snyk.
       - name: Snyk Container Analysis
+
+        env:
+          # This is where you will need to introduce the Snyk API token created with your Snyk account
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      
         run: snyk container monitor bm24 --file=Dockerfile -d && snyk container monitor llm-service --file=Dockerfile -d
 
         # Push the Snyk Code results into GitHub Code Scanning tab
