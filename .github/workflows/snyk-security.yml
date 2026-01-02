@@ -69,7 +69,7 @@ jobs:
         
         # Runs Snyk Container (Container and SCA) analysis and uploads result to Snyk.
       - name: Snyk Container Analysis
-        run: snyk container monitor bm24 --file=Dockerfile && snyk container monitor llm-service --file=Dockerfile
+        run: snyk container monitor bm24 --file=Dockerfile -d && snyk container monitor llm-service --file=Dockerfile -d
 
         # Push the Snyk Code results into GitHub Code Scanning tab
       - name: Upload results
