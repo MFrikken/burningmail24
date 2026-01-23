@@ -48,8 +48,14 @@ jobs:
       - name: Install Bun
         run: curl -fsSL https://bun.sh/install | bash
 
-      - name: Install project dependencies
+      - name: Install project dependencies for bm24
+        working-directory: ./bm24
         run: bun install
+
+      - name: Install project dependencies for llm-service
+        working-directory: ./bm24/llm-service
+        run: bun install
+
 
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
@@ -75,13 +81,22 @@ jobs:
         run: docker build -t bm24 ./bm24 && docker build -t llm-service ./bm24/llm-service
 
         # Runs Snyk Container (Container and SCA) analysis and uploads result to Snyk.
-      - name: Snyk Container Analysis
+      - name: Snyk Container Analysis (bm24)
 
         env:
           # This is where you will need to introduce the Snyk API token created with your Snyk account
           SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
 
-        run: snyk container test bm24 --file=./bm24/dockerfile -d && snyk container test llm-service --file=./bm24/llm-service/dockerfile -d
+        run: snyk container test bm24 --file=./bm24/Dockerfile -d
+
+
+      - name: Snyk Container Analysis (llm-service)
+        env:
+          # This is where you will need to introduce the Snyk API token created with your Snyk account
+          SNYK_TOKEN: ${{ secrets.SNYK_API_TOKEN }}
+
+        run: snyk container test llm-service --file=./bm24/llm-service/Dockerfile -d
+
 
         # Push the Snyk Code results into GitHub Code Scanning tab
       - name: Upload results
