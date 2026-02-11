@@ -2,6 +2,9 @@ name: Snyk Sast Scan
 
 on: [push, pull_request]
 
+permissions:
+  security-events: read
+
 jobs:
     security:
         runs-on: ubuntu-latest
@@ -21,6 +24,6 @@ jobs:
 
             # Push the Snyk Code results into GitHub Code Scanning tab
             - name: Upload results
-              uses: github/codeql-action/upload-sarif@v3
+              uses: github/codeql-action/upload-sarif@v4
               with:
-                  sarif_file: snyk_code.sarif
+                  sarif_file: bm24/snyk-code.sarif
