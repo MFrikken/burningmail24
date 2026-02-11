@@ -3,7 +3,8 @@ name: Snyk Sast Scan
 on: [push, pull_request]
 
 permissions:
-  security-events: read
+  security-events: write
+  contents: read
 
 jobs:
     security:
