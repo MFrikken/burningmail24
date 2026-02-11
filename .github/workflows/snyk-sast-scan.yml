@@ -1,6 +1,6 @@
 name: Snyk Sast Scan
 
-on: [push, pull_request]
+on: [push]
 
 permissions:
   security-events: write
