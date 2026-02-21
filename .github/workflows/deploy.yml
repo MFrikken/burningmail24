@@ -3,6 +3,8 @@ name: "Deploy"
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'bm24/**'
   workflow_dispatch:
 
 jobs:
