@@ -1,6 +1,15 @@
 name: Snyk Sast Scan
 
-on: [push]
+on: 
+  push:
+    paths: 
+      - '**.ts'
+      - '**.tsx'
+      - '**.js'
+    branches-ignore: 
+      - 'main'
+      - 'develop'
+  workflow_dispatch:
 
 permissions:
   security-events: write

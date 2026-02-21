@@ -1,6 +1,16 @@
 name: Snyk Dependency Scan
 
-on: [pull_request]
+on: 
+  pull_request:
+    types: ["opened"]
+  push:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'bun.lock'
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
 
 permissions:
   security-events: write
