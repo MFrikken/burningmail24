@@ -35,3 +35,10 @@ jobs:
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: bm24/snyk-dependency.sarif
+
+      # Push the Snyk Code results as Artifact
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: snyk-dependency-sarif
+          path: bm24/snyk-code.sarif
