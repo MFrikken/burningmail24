@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: snyk-dependency-sarif
-          path: bm24/snyk-code.sarif
+          path: bm24/snyk-dependency.sarif
