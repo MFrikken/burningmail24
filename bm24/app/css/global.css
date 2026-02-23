@@ -48,24 +48,4 @@
         transform-origin: center;
         margin-top: 0.3rem;
     }
-
-    .footer-wrapper {
-        width: 100%;
-        margin-top: 2rem;
-        position: sticky;
-        bottom: 0;
-    }
-
-    hr {
-        border: none;
-        border-top: 2px solid rgba(168, 168, 168, 0.8);
-        width: 90% !important;
-    }
-
-    body .footer {
-        width: 100%;
-        text-align: center;
-        margin-left: 0;
-        margin-right: 0;
-    }
 }
