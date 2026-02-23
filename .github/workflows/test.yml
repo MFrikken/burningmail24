@@ -1,0 +1,27 @@
+name: Build Test
+
+on:
+    pull_request:
+        types: ["opened"]
+        branches:
+            - "main"
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup bun
+              uses: oven-sh/setup-bun@v2
+
+            - name: Install bm24 dependencies
+              working-directory: bm24
+              run: bun install
+
+            - name: Build bm24
+              working-directory: bm24
+              run: bun run build
