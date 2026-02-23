@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://burningmail24.live/sitemap.xml
