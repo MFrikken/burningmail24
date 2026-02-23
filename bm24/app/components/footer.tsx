@@ -14,7 +14,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    ©2025 burningmail24.live | Published under MIT License
+                    ©2025-2026 burningmail24.live | Published under MIT License
                 </a>
             </div>
         </div>
