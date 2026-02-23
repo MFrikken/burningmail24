@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import { pipeline, TextStreamer } from "@huggingface/transformers";
+import { pipeline } from "@huggingface/transformers";
 
 const server = Fastify({ logger: false });
 
@@ -64,7 +64,9 @@ async function generateSubject(mailbody, count = 3) {
 server.post("/generate", async (request, reply) => {
     const mailbody = request.body?.mailbody;
 
-    if (!mailbody) return reply.code(400).send({ error: "mailbody is missing" });
+    if (!mailbody || (typeof mailbody === "string" && mailbody.trim() === "")) {
+        return reply.code(400).send({ error: "mailbody is missing" });
+    }
 
     const output = await generateSubject(mailbody);
     return { output };
