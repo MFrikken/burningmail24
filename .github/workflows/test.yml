@@ -5,12 +5,13 @@ on:
         types: ["opened"]
         branches:
             - "main"
+    workflow_dispatch:
 
 permissions:
     contents: read
 
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -18,10 +19,10 @@ jobs:
             - name: Setup bun
               uses: oven-sh/setup-bun@v2
 
-            - name: Install bm24 dependencies
-              working-directory: bm24
+            - name: Install Next.js dependencies
+              working-directory: bm24/next-frontend
               run: bun install
 
             - name: Build bm24
-              working-directory: bm24
+              working-directory: bm24/next-frontend
               run: bun run build

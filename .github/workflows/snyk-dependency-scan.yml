@@ -22,12 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install backend dependencies
-        working-directory: bm24
+      - name: Install Next.js dependencies
+        working-directory: bm24/next-frontend
         run: npm install
 
       - name: Install llm-service dependencies
-        working-directory: bm24/llm-service
+        working-directory: bm24/services/llm-service
         run: npm install
 
       - name: Install Snyk
