@@ -10,7 +10,7 @@ permissions:
     contents: read
 
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -23,5 +23,5 @@ jobs:
               run: bun install
 
             - name: Build bm24
-              working-directory: bm24
+              working-directory: bm24/next-frontend
               run: bun run build
