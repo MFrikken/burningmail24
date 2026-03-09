@@ -1,7 +1,7 @@
 services:
-  bm24:
-    build: .
-    container_name: bm24
+  bm24-frontend:
+    build: ../next-frontend
+    container_name: bm24-frontend
     read_only: true
     cap_drop:
       - ALL
@@ -13,7 +13,7 @@ services:
       - bm24-internal
 
   llm-service:
-    build: ./llm-service
+    build: ../services/llm-service
     container_name: llm-service
     read_only: true
     cap_drop:
@@ -21,7 +21,7 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ./llm-service/model_cache:/app/model_cache:ro
+      - ../services/llm-service/model_cache:/app/model_cache:ro
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=100m
     networks:

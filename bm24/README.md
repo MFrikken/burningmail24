@@ -1,5 +1,5 @@
 # Burningmail24 Local Setup
-If you want to run this project locally, you can simply run the [docker-compose file](docker-compose.yml) from `/bm24`: 
+If you want to run this project locally, you can simply run the [docker-compose file](infra/docker-compose.yml) from `/bm24/infra`: 
 ```sh
 docker-compose up --build
 ```
